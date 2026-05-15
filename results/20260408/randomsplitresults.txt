@@ -1,0 +1,412 @@
+
+================================================================================
+    Machine Learning Model Evaluation Framework for IoT Network Traffic
+================================================================================
+
+IoT-23 Dataset shape: (19973777, 24)
+                  ts                 uid        id.orig_h  id.orig_p        id.resp_h  id.resp_p proto service  ...  orig_pkts  orig_ip_bytes  resp_pkts resp_ip_bytes tunnel_parents      label             detailed-label           source_file
+0  1525879831.015811  CUmrqr4svHuSXJy5z7  192.168.100.103      51524   65.127.233.163         23   tcp       -  ...          3            180          0             0                 Malicious  PartOfAHorizontalPortScan  1-1-conn.log.labeled
+1  1525879831.025055  CH98aB3s1kJeq6SFOc  192.168.100.103      56305    63.150.16.171         23   tcp       -  ...          1             60          0             0                 Malicious  PartOfAHorizontalPortScan  1-1-conn.log.labeled
+2  1525879831.045045   C3GBTkINvXNjVGtN5  192.168.100.103      41101     111.40.23.49         23   tcp       -  ...          1             60          0             0                 Malicious  PartOfAHorizontalPortScan  1-1-conn.log.labeled
+3  1525879832.016240   CDe43c1PtgynajGI6  192.168.100.103      60905  131.174.215.147         23   tcp       -  ...          3            180          0             0                 Malicious  PartOfAHorizontalPortScan  1-1-conn.log.labeled
+4  1525879832.024985  CJaDcG3MZzvf1YVYI4  192.168.100.103      44301      91.42.47.63         23   tcp       -  ...          1             60          0             0                 Malicious  PartOfAHorizontalPortScan  1-1-conn.log.labeled
+
+[5 rows x 24 columns]
+
+[DATASET PROCESSING]
+----------------------------------------------------------------------
+Discovering IoT-23 dataset files...
+  Found 12 files in dataset\malicious/
+Loading and parsing datasets...
+  1-1-conn.log.labeled: 1,008,748 rows (Zeek) -> 1,008,748 labels parsed
+  20-1-conn.log.labeled: 3,209 rows (Zeek) -> 3,209 labels parsed
+  21-1-conn.log.labeled: 3,286 rows (Zeek) -> 3,286 labels parsed
+  3-1-conn.log.labeled: 156,103 rows (Zeek) -> 156,103 labels parsed
+  34-1-conn.log.labeled: 23,145 rows (Zeek) -> 23,145 labels parsed
+  42-1-conn.log.labeled: 4,426 rows (Zeek) -> 4,426 labels parsed
+  44-1-conn.log.labeled: 237 rows (Zeek) -> 237 labels parsed
+  48-1-conn.log.labeled: 3,394,338 rows (Zeek) -> 3,394,338 labels parsed
+  49-1-conn.log.labeled: 5,410,561 rows (Zeek) -> 5,410,561 labels parsed
+  60-1-conn.log.labeled: 3,581,028 rows (Zeek) -> 3,581,028 labels parsed
+  8-1-conn.log.labeled: 10,403 rows (Zeek) -> 10,403 labels parsed
+  9-1-conn.log.labeled: 6,378,293 rows (Zeek) -> 6,378,293 labels parsed
+Combining datasets...
+  Total rows: 19,973,777
+  Label distribution: {'Malicious': 19452343, 'Benign': 521434}
+  Added source_file column for provenance tracking
+
+[STEP 1/4] VALIDATING DATASET...
+----------------------------------------------------------------------
+VALIDATION PASSED
+  Recommendations:
+    • Found 12 unique source file(s) in 'source_file'.
+   Split strategy: RANDOM train/test split.
+
+[STEP 2/4] PREPROCESSING AND SPLITTING DATA...
+----------------------------------------------------------------------
+  • RANDOM split: 12 folds
+  • Each fold uses a different random train/test partition.
+
+[RANDOM Fold 1/12] random_state=42
+----------------------------------------------------------------------
+  • Split result: 15,979,021 train, 3,994,756 test samples
+
+[STEP 3/4] TRAINING MODEL...
+----------------------------------------------------------------------
+  • Model trained successfully with 15,979,021 samples
+  • Model type: RandomForestClassifier
+
+[STEP 4/4] EVALUATING MODEL...
+----------------------------------------------------------------------
+  • Accuracy: 0.9950
+  • Precision: 0.9895
+  • Recall: 0.9117
+  • F1 Score: 0.9471
+  • Feature importance (this fold):
+      - id.resp_p: 0.2747
+      - orig_ip_bytes: 0.2269
+      - id.orig_p: 0.2230
+      - orig_pkts: 0.1846
+      - orig_bytes: 0.0391
+      - duration: 0.0185
+      - resp_pkts: 0.0176
+      - resp_ip_bytes: 0.0138
+      - resp_bytes: 0.0018
+      - missed_bytes: 0.0000
+
+[RANDOM Fold 2/12] random_state=43
+----------------------------------------------------------------------
+  • Split result: 15,979,021 train, 3,994,756 test samples
+
+[STEP 3/4] TRAINING MODEL...
+----------------------------------------------------------------------
+  • Model trained successfully with 15,979,021 samples
+  • Model type: RandomForestClassifier
+
+[STEP 4/4] EVALUATING MODEL...
+----------------------------------------------------------------------
+  • Accuracy: 0.9957
+  • Precision: 0.9967
+  • Recall: 0.9181
+  • F1 Score: 0.9538
+  • Feature importance (this fold):
+      - id.resp_p: 0.2947
+      - orig_ip_bytes: 0.2741
+      - id.orig_p: 0.2222
+      - orig_pkts: 0.1291
+      - orig_bytes: 0.0293
+      - duration: 0.0217
+      - resp_pkts: 0.0187
+      - resp_ip_bytes: 0.0085
+      - resp_bytes: 0.0017
+      - missed_bytes: 0.0000
+
+[RANDOM Fold 3/12] random_state=44
+----------------------------------------------------------------------
+  • Split result: 15,979,021 train, 3,994,756 test samples
+
+[STEP 3/4] TRAINING MODEL...
+----------------------------------------------------------------------
+  • Model trained successfully with 15,979,021 samples
+  • Model type: RandomForestClassifier
+
+[STEP 4/4] EVALUATING MODEL...
+----------------------------------------------------------------------
+  • Accuracy: 0.9956
+  • Precision: 0.9962
+  • Recall: 0.9173
+  • F1 Score: 0.9532
+  • Feature importance (this fold):
+      - orig_ip_bytes: 0.3141
+      - id.resp_p: 0.2783
+      - id.orig_p: 0.2102
+      - orig_pkts: 0.0959
+      - orig_bytes: 0.0393
+      - duration: 0.0240
+      - resp_pkts: 0.0210
+      - resp_ip_bytes: 0.0143
+      - resp_bytes: 0.0030
+      - missed_bytes: 0.0000
+
+[RANDOM Fold 4/12] random_state=45
+----------------------------------------------------------------------
+  • Split result: 15,979,021 train, 3,994,756 test samples
+
+[STEP 3/4] TRAINING MODEL...
+----------------------------------------------------------------------
+  • Model trained successfully with 15,979,021 samples
+  • Model type: RandomForestClassifier
+
+[STEP 4/4] EVALUATING MODEL...
+----------------------------------------------------------------------
+  • Accuracy: 0.9945
+  • Precision: 0.9970
+  • Recall: 0.8954
+  • F1 Score: 0.9401
+  • Feature importance (this fold):
+      - id.orig_p: 0.2624
+      - orig_ip_bytes: 0.2534
+      - id.resp_p: 0.2124
+      - orig_pkts: 0.1827
+      - orig_bytes: 0.0382
+      - resp_pkts: 0.0175
+      - duration: 0.0162
+      - resp_ip_bytes: 0.0148
+      - resp_bytes: 0.0024
+      - missed_bytes: 0.0000
+
+[RANDOM Fold 5/12] random_state=46
+----------------------------------------------------------------------
+  • Split result: 15,979,021 train, 3,994,756 test samples
+
+[STEP 3/4] TRAINING MODEL...
+----------------------------------------------------------------------
+  • Model trained successfully with 15,979,021 samples
+  • Model type: RandomForestClassifier
+
+[STEP 4/4] EVALUATING MODEL...
+----------------------------------------------------------------------
+  • Accuracy: 0.9956
+  • Precision: 0.9850
+  • Recall: 0.9274
+  • F1 Score: 0.9543
+  • Feature importance (this fold):
+      - orig_ip_bytes: 0.2558
+      - id.resp_p: 0.2545
+      - orig_pkts: 0.2160
+      - id.orig_p: 0.1823
+      - orig_bytes: 0.0366
+      - duration: 0.0214
+      - resp_pkts: 0.0168
+      - resp_ip_bytes: 0.0140
+      - resp_bytes: 0.0027
+      - missed_bytes: 0.0000
+
+[RANDOM Fold 6/12] random_state=47
+----------------------------------------------------------------------
+  • Split result: 15,979,021 train, 3,994,756 test samples
+
+[STEP 3/4] TRAINING MODEL...
+----------------------------------------------------------------------
+  • Model trained successfully with 15,979,021 samples
+  • Model type: RandomForestClassifier
+
+[STEP 4/4] EVALUATING MODEL...
+----------------------------------------------------------------------
+  • Accuracy: 0.9945
+  • Precision: 0.9971
+  • Recall: 0.8950
+  • F1 Score: 0.9399
+  • Feature importance (this fold):
+      - orig_ip_bytes: 0.2588
+      - id.resp_p: 0.2364
+      - id.orig_p: 0.2263
+      - orig_pkts: 0.1895
+      - orig_bytes: 0.0383
+      - duration: 0.0187
+      - resp_pkts: 0.0167
+      - resp_ip_bytes: 0.0134
+      - resp_bytes: 0.0018
+      - missed_bytes: 0.0000
+
+[RANDOM Fold 7/12] random_state=48
+----------------------------------------------------------------------
+  • Split result: 15,979,021 train, 3,994,756 test samples
+
+[STEP 3/4] TRAINING MODEL...
+----------------------------------------------------------------------
+  • Model trained successfully with 15,979,021 samples
+  • Model type: RandomForestClassifier
+
+[STEP 4/4] EVALUATING MODEL...
+----------------------------------------------------------------------
+  • Accuracy: 0.9955
+  • Precision: 0.9887
+  • Recall: 0.9206
+  • F1 Score: 0.9520
+  • Feature importance (this fold):
+      - id.resp_p: 0.3107
+      - orig_ip_bytes: 0.3081
+      - id.orig_p: 0.1735
+      - orig_pkts: 0.1181
+      - orig_bytes: 0.0384
+      - duration: 0.0184
+      - resp_pkts: 0.0170
+      - resp_ip_bytes: 0.0140
+      - resp_bytes: 0.0019
+      - missed_bytes: 0.0000
+
+[RANDOM Fold 8/12] random_state=49
+----------------------------------------------------------------------
+  • Split result: 15,979,021 train, 3,994,756 test samples
+
+[STEP 3/4] TRAINING MODEL...
+----------------------------------------------------------------------
+  • Model trained successfully with 15,979,021 samples
+  • Model type: RandomForestClassifier
+
+[STEP 4/4] EVALUATING MODEL...
+----------------------------------------------------------------------
+  • Accuracy: 0.9955
+  • Precision: 0.9974
+  • Recall: 0.9138
+  • F1 Score: 0.9516
+  • Feature importance (this fold):
+      - orig_ip_bytes: 0.2974
+      - id.resp_p: 0.2491
+      - id.orig_p: 0.2232
+      - orig_pkts: 0.1331
+      - orig_bytes: 0.0419
+      - resp_pkts: 0.0215
+      - duration: 0.0181
+      - resp_ip_bytes: 0.0131
+      - resp_bytes: 0.0024
+      - missed_bytes: 0.0000
+
+[RANDOM Fold 9/12] random_state=50
+----------------------------------------------------------------------
+  • Split result: 15,979,021 train, 3,994,756 test samples
+
+[STEP 3/4] TRAINING MODEL...
+----------------------------------------------------------------------
+  • Model trained successfully with 15,979,021 samples
+  • Model type: RandomForestClassifier
+
+[STEP 4/4] EVALUATING MODEL...
+----------------------------------------------------------------------
+  • Accuracy: 0.9960
+  • Precision: 0.9977
+  • Recall: 0.9234
+  • F1 Score: 0.9574
+  • Feature importance (this fold):
+      - orig_ip_bytes: 0.3039
+      - id.resp_p: 0.2443
+      - id.orig_p: 0.1922
+      - orig_pkts: 0.1645
+      - orig_bytes: 0.0368
+      - resp_pkts: 0.0248
+      - duration: 0.0237
+      - resp_ip_bytes: 0.0072
+      - resp_bytes: 0.0027
+      - missed_bytes: 0.0000
+
+[RANDOM Fold 10/12] random_state=51
+----------------------------------------------------------------------
+  • Split result: 15,979,021 train, 3,994,756 test samples
+
+[STEP 3/4] TRAINING MODEL...
+----------------------------------------------------------------------
+  • Model trained successfully with 15,979,021 samples
+  • Model type: RandomForestClassifier
+
+[STEP 4/4] EVALUATING MODEL...
+----------------------------------------------------------------------
+  • Accuracy: 0.9950
+  • Precision: 0.9970
+  • Recall: 0.9048
+  • F1 Score: 0.9459
+  • Feature importance (this fold):
+      - orig_ip_bytes: 0.2440
+      - id.orig_p: 0.2436
+      - id.resp_p: 0.2144
+      - orig_pkts: 0.1951
+      - orig_bytes: 0.0434
+      - resp_pkts: 0.0236
+      - duration: 0.0191
+      - resp_ip_bytes: 0.0137
+      - resp_bytes: 0.0031
+      - missed_bytes: 0.0000
+
+[RANDOM Fold 11/12] random_state=52
+----------------------------------------------------------------------
+  • Split result: 15,979,021 train, 3,994,756 test samples
+
+[STEP 3/4] TRAINING MODEL...
+----------------------------------------------------------------------
+  • Model trained successfully with 15,979,021 samples
+  • Model type: RandomForestClassifier
+
+[STEP 4/4] EVALUATING MODEL...
+----------------------------------------------------------------------
+  • Accuracy: 0.9946
+  • Precision: 0.9970
+  • Recall: 0.8959
+  • F1 Score: 0.9404
+  • Feature importance (this fold):
+      - id.resp_p: 0.2797
+      - id.orig_p: 0.2696
+      - orig_ip_bytes: 0.1943
+      - orig_pkts: 0.1588
+      - orig_bytes: 0.0407
+      - duration: 0.0187
+      - resp_pkts: 0.0182
+      - resp_ip_bytes: 0.0168
+      - resp_bytes: 0.0032
+      - missed_bytes: 0.0000
+
+[RANDOM Fold 12/12] random_state=53
+----------------------------------------------------------------------
+  • Split result: 15,979,021 train, 3,994,756 test samples
+
+[STEP 3/4] TRAINING MODEL...
+----------------------------------------------------------------------
+  • Model trained successfully with 15,979,021 samples
+  • Model type: RandomForestClassifier
+
+[STEP 4/4] EVALUATING MODEL...
+----------------------------------------------------------------------
+  • Accuracy: 0.9949
+  • Precision: 0.9877
+  • Recall: 0.9110
+  • F1 Score: 0.9459
+  • Feature importance (this fold):
+      - orig_ip_bytes: 0.2932
+      - id.resp_p: 0.2501
+      - id.orig_p: 0.2131
+      - orig_pkts: 0.1512
+      - orig_bytes: 0.0361
+      - duration: 0.0200
+      - resp_pkts: 0.0168
+      - resp_ip_bytes: 0.0166
+      - resp_bytes: 0.0029
+      - missed_bytes: 0.0000
+
+
+======================================================================
+RANDOM CROSS-VALIDATION SUMMARY
+======================================================================
+  • Total folds: 12
+  • Aggregate metrics (mean ± std across folds):
+    • Accuracy: 0.9952 ± 0.0005
+    • F1 Score: 0.9485 ± 0.0058
+    • Precision: 0.9939 ± 0.0045
+    • Recall: 0.9112 ± 0.0107
+======================================================================
+
+======================================================================
+EVALUATION RESULTS
+======================================================================
+
+Dataset Information:
+  - Strategy: random
+  - Training samples: 191748252
+  - Test samples: 47937072
+
+Model Performance:
+  - Accuracy: 0.9952 ± 0.0005
+  - Precision: 0.9939 ± 0.0045
+  - Recall: 0.9112 ± 0.0107
+  - F1 Score: 0.9485 ± 0.0058
+
+Feature Importance (aggregated across folds):
+  - orig_ip_bytes: 0.2687 ± 0.0350
+  - id.resp_p: 0.2583 ± 0.0290
+  - id.orig_p: 0.2201 ± 0.0280
+  - orig_pkts: 0.1599 ± 0.0342
+  - orig_bytes: 0.0382 ± 0.0034
+  - duration: 0.0199 ± 0.0023
+  - resp_pkts: 0.0192 ± 0.0027
+  - resp_ip_bytes: 0.0134 ± 0.0027
+  - resp_bytes: 0.0025 ± 0.0005
+  - missed_bytes: 0.0000 ± 0.0000
+======================================================================

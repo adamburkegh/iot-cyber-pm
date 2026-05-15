@@ -1,0 +1,14 @@
+
+# python
+__pycache__/
+*.pyc
+
+# vim
+*.swp
+
+# project
+dataset/
+var/
+
+
+

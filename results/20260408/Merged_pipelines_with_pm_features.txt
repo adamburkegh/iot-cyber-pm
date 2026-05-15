@@ -1,0 +1,293 @@
+Extracting benign logs...
+Zeek files detected: ['4B-1-B-conn.log.labeled', '5B-1-B-conn.log.labeled', '7B-1-B-conn.log.labeled']
+Reading 4B-1-B-conn.log.labeled...
+  Loaded rows: 452
+ Rows after TCP filter: 142
+ Rows after exploding history: 912
+Reading 5B-1-B-conn.log.labeled...
+  Loaded rows: 1374
+ Rows after TCP filter: 482
+ Rows after exploding history: 2598
+Reading 7B-1-B-conn.log.labeled...
+  Loaded rows: 130
+ Rows after TCP filter: 10
+ Rows after exploding history: 18
+
+Combined head:
+                  ts                 uid      id.orig_h  ...              source_file event_order history_activity
+0  1540469831.302625  CGQf8t1kjdxB5PHXL4  192.168.1.132  ...  4B-1-B-conn.log.labeled           1                S  
+1  1540469831.302625  CGQf8t1kjdxB5PHXL4  192.168.1.132  ...  4B-1-B-conn.log.labeled           2                h  
+2  1540469831.302625  CGQf8t1kjdxB5PHXL4  192.168.1.132  ...  4B-1-B-conn.log.labeled           3                A  
+3  1540469831.302625  CGQf8t1kjdxB5PHXL4  192.168.1.132  ...  4B-1-B-conn.log.labeled           4                F  
+4  1540469831.302625  CGQf8t1kjdxB5PHXL4  192.168.1.132  ...  4B-1-B-conn.log.labeled           5                f  
+Columns:
+['ts', 'uid', 'id.orig_h', 'id.orig_p', 'id.resp_h', 'id.resp_p', 'proto', 'service', 'duration', 'orig_bytes', 'resp_bytes', 'conn_state', 'local_orig', 'local_resp', 'missed_bytes', 'history', 'orig_pkts', 'orig_ip_bytes', 'resp_pkts', 'resp_ip_bytes', 'label', 'datetime', 'source_file', 'event_order', 'history_activity']
+Converted DataFrame to EventLog with 634 traces and 3528 events.
+Discovering model from benign logs...
+Could not save Petri net visualization (Graphviz may be missing): failed to execute WindowsPath('dot'), make sure the Graphviz executables are on your systems' PATH
+Model discovery complete. SLPN saved to: output\20260311_201813\stochastic_petri_net.slpn
+Extracting malicious logs...
+Zeek files detected: ['1-1-conn.log.labeled', '3-1-conn.log.labeled', '34-1-conn.log.labeled', '48-1-conn.log.labeled', '60-1-conn.log.labeled', '8-1-conn.log.labeled']
+Reading 1-1-conn.log.labeled...
+  Loaded rows: 1008748
+ Rows after TCP filter: 583134
+ Rows after exploding history: 647297
+Reading 3-1-conn.log.labeled...
+  Loaded rows: 156103
+ Rows after TCP filter: 154158
+ Rows after exploding history: 200363
+Reading 34-1-conn.log.labeled...
+  Loaded rows: 23145
+ Rows after TCP filter: 21331
+ Rows after exploding history: 31422
+Reading 48-1-conn.log.labeled...
+  Loaded rows: 3394338
+ Rows after TCP filter: 3390770
+ Rows after exploding history: 3395405
+Reading 60-1-conn.log.labeled...
+  Loaded rows: 3581028
+ Rows after TCP filter: 3580500
+ Rows after exploding history: 3580859
+Reading 8-1-conn.log.labeled...
+  Loaded rows: 10403
+ Rows after TCP filter: 8224
+ Rows after exploding history: 8224
+
+Combined head:
+                  ts                 uid        id.orig_h id.orig_p        id.resp_h  ...                                            label             datetime           source_file event_order history_activity
+0  1525879831.015811  CUmrqr4svHuSXJy5z7  192.168.100.103     51524   65.127.233.163  ...  (empty)   Malicious   PartOfAHorizontalPortScan  2018-05-09 15:30:31  1-1-conn.log.labeled           1                S
+1  1525879831.025055  CH98aB3s1kJeq6SFOc  192.168.100.103     56305    63.150.16.171  ...  (empty)   Malicious   PartOfAHorizontalPortScan  2018-05-09 15:30:31  1-1-conn.log.labeled           1                S
+2  1525879831.045045   C3GBTkINvXNjVGtN5  192.168.100.103     41101     111.40.23.49  ...  (empty)   Malicious   PartOfAHorizontalPortScan  2018-05-09 15:30:31  1-1-conn.log.labeled           1                S
+3  1525879832.016240   CDe43c1PtgynajGI6  192.168.100.103     60905  131.174.215.147  ...  (empty)   Malicious   PartOfAHorizontalPortScan  2018-05-09 15:30:32  1-1-conn.log.labeled           1                S
+4  1525879832.024985  CJaDcG3MZzvf1YVYI4  192.168.100.103     44301      91.42.47.63  ...  (empty)   Malicious   PartOfAHorizontalPortScan  2018-05-09 15:30:32  1-1-conn.log.labeled           1                S
+
+[5 rows x 25 columns]
+
+Columns:
+['ts', 'uid', 'id.orig_h', 'id.orig_p', 'id.resp_h', 'id.resp_p', 'proto', 'service', 'duration', 'orig_bytes', 'resp_bytes', 'conn_state', 'local_orig', 'local_resp', 'missed_bytes', 'history', 'orig_pkts', 'orig_ip_bytes', 'resp_pkts', 'resp_ip_bytes', 'label', 'datetime', 'source_file', 'event_order', 'history_activity']
+Converted DataFrame to EventLog with 7738117 traces and 7863570 events.
+Calculating metrics for malicious logs...
+Grouping by variants.....
+Calculated 10 unique variants...
+Calculated 20 unique variants...                                                                                                                                                                                           
+Calculated 30 unique variants...
+Calculated 40 unique variants...                                                                                                                                                                                           
+Calculated 50 unique variants...                                                                                                                                                                                           
+Calculated 60 unique variants...                                                                                                                                                                                           
+Calculated 70 unique variants...
+Calculated 80 unique variants...
+Calculated 90 unique variants...                                                                                                                                                                                           
+Calculated 100 unique variants...
+Calculated 110 unique variants...
+Calculated 120 unique variants...
+Calculated 130 unique variants...                                                                                                                                                                                          
+Calculated 140 unique variants...                                                                                                                                                                                          
+Calculated 150 unique variants...
+Calculated 160 unique variants...
+Calculated 170 unique variants...
+Calculated 180 unique variants...                                                                                                                                                                                          
+Calculated 190 unique variants...
+Calculated 200 unique variants...                                                                                                                                                                                          
+Calculated 210 unique variants...                                                                                                                                                                                          
+Writing all traces...
+Metrics written to: output\20260311_201813\metrics.csv
+Pipeline execution complete.
+
+================================================================================
+    Machine Learning Model Evaluation Framework for IoT Network Traffic
+================================================================================
+
+[DATASET PROCESSING]
+----------------------------------------------------------------------
+Discovering IoT-23 dataset files...
+  Found 6 files in dataset\malicious/
+Loading and parsing datasets...
+  1-1-conn.log.labeled: 1,008,748 rows (Zeek) -> 1,008,748 labels parsed
+  3-1-conn.log.labeled: 156,103 rows (Zeek) -> 156,103 labels parsed
+  34-1-conn.log.labeled: 23,145 rows (Zeek) -> 23,145 labels parsed
+  48-1-conn.log.labeled: 3,394,338 rows (Zeek) -> 3,394,338 labels parsed
+  60-1-conn.log.labeled: 3,581,028 rows (Zeek) -> 3,581,028 labels parsed
+  8-1-conn.log.labeled: 10,403 rows (Zeek) -> 10,403 labels parsed
+Combining datasets...
+  Total rows: 8,173,765
+  Label distribution: {'Malicious': 7689640, 'Benign': 484125}
+  Added source_file column for provenance tracking
+
+[STEP 1/4] VALIDATING DATASET...
+----------------------------------------------------------------------
+VALIDATION PASSED
+  Recommendations:
+    • Found 6 unique source file(s) in 'source_file'.
+   Split strategy: Leave-One-File-Out (LOFO)
+    Each source file will be used once as the test set; all remaining files form the training set in that fold.
+
+[STEP 2/4] PREPROCESSING AND SPLITTING DATA...
+----------------------------------------------------------------------
+  • LOFO split: 6 unique source files found
+  • Will iterate over each file as test set once
+
+[LOFO Fold 1/6] Testing on file: '1-1-conn.log.labeled'
+----------------------------------------------------------------------
+  • Training on 5 files (7,165,017 samples)
+  • Testing on 1 file (1,008,748 samples)
+
+[STEP 3/4] TRAINING MODEL...
+----------------------------------------------------------------------
+  • Model trained successfully with 7,165,017 samples
+  • Model type: RandomForestClassifier
+
+[STEP 4/4] EVALUATING MODEL...
+----------------------------------------------------------------------
+  • Accuracy: 0.9568
+  • Precision: 0.9626
+  • Recall: 0.9535
+  • F1 Score: 0.9562
+  • Feature importance (this fold):
+      - earth_movers_distance: 0.6085
+      - chi_square: 0.1935
+      - entropic_relevance: 0.1924
+      - trace_probability: 0.0056
+
+[LOFO Fold 2/6] Testing on file: '3-1-conn.log.labeled'
+----------------------------------------------------------------------
+  • Training on 5 files (8,017,662 samples)
+  • Testing on 1 file (156,103 samples)
+
+[STEP 3/4] TRAINING MODEL...
+----------------------------------------------------------------------
+  • Model trained successfully with 8,017,662 samples
+  • Model type: RandomForestClassifier
+
+[STEP 4/4] EVALUATING MODEL...
+----------------------------------------------------------------------
+  • Accuracy: 0.9834
+  • Precision: 0.9916
+  • Recall: 0.7144
+  • F1 Score: 0.7959
+  • Feature importance (this fold):
+      - earth_movers_distance: 0.5525
+      - chi_square: 0.2486
+      - entropic_relevance: 0.1989
+      - trace_probability: 0.0001
+
+[LOFO Fold 3/6] Testing on file: '34-1-conn.log.labeled'
+----------------------------------------------------------------------
+  • Training on 5 files (8,150,620 samples)
+  • Testing on 1 file (23,145 samples)
+
+[STEP 3/4] TRAINING MODEL...
+----------------------------------------------------------------------
+  • Model trained successfully with 8,150,620 samples
+  • Model type: RandomForestClassifier
+
+[STEP 4/4] EVALUATING MODEL...
+----------------------------------------------------------------------
+  • Accuracy: 0.9951
+  • Precision: 0.9966
+  • Recall: 0.9711
+  • F1 Score: 0.9834
+  • Feature importance (this fold):
+      - earth_movers_distance: 0.5519
+      - chi_square: 0.2482
+      - entropic_relevance: 0.1997
+      - trace_probability: 0.0002
+
+[LOFO Fold 4/6] Testing on file: '48-1-conn.log.labeled'
+----------------------------------------------------------------------
+  • Training on 5 files (4,779,427 samples)
+  • Testing on 1 file (3,394,338 samples)
+
+[STEP 3/4] TRAINING MODEL...
+----------------------------------------------------------------------
+  • Model trained successfully with 4,779,427 samples
+  • Model type: RandomForestClassifier
+
+[STEP 4/4] EVALUATING MODEL...
+----------------------------------------------------------------------
+  • Accuracy: 1.0000
+  • Precision: 0.9953
+  • Recall: 0.9973
+  • F1 Score: 0.9963
+  • Feature importance (this fold):
+      - earth_movers_distance: 0.5549
+      - chi_square: 0.2467
+      - entropic_relevance: 0.1983
+      - trace_probability: 0.0001
+
+[LOFO Fold 5/6] Testing on file: '60-1-conn.log.labeled'
+----------------------------------------------------------------------
+  • Training on 5 files (4,592,737 samples)
+  • Testing on 1 file (3,581,028 samples)
+
+[STEP 3/4] TRAINING MODEL...
+----------------------------------------------------------------------
+  • Model trained successfully with 4,592,737 samples
+  • Model type: RandomForestClassifier
+
+[STEP 4/4] EVALUATING MODEL...
+----------------------------------------------------------------------
+  • Accuracy: 1.0000
+  • Precision: 0.9870
+  • Recall: 0.9998
+  • F1 Score: 0.9933
+  • Feature importance (this fold):
+      - earth_movers_distance: 0.5498
+      - chi_square: 0.2494
+      - entropic_relevance: 0.2005
+      - trace_probability: 0.0002
+
+[LOFO Fold 6/6] Testing on file: '8-1-conn.log.labeled'
+----------------------------------------------------------------------
+  • Training on 5 files (8,163,362 samples)
+  • Testing on 1 file (10,403 samples)
+
+[STEP 3/4] TRAINING MODEL...
+----------------------------------------------------------------------
+  • Model trained successfully with 8,163,362 samples
+  • Model type: RandomForestClassifier
+
+[STEP 4/4] EVALUATING MODEL...
+----------------------------------------------------------------------
+  • Accuracy: 1.0000
+  • Precision: 1.0000
+  • Recall: 1.0000
+  • F1 Score: 1.0000
+  • Feature importance (this fold):
+      - earth_movers_distance: 0.5517
+      - chi_square: 0.2483
+      - entropic_relevance: 0.1999
+      - trace_probability: 0.0002
+
+
+======================================================================
+LOFO CROSS-VALIDATION SUMMARY
+======================================================================
+  • Total folds: 6
+  • Aggregate metrics (mean ± std across folds):
+    • Accuracy: 0.9892 ± 0.0156
+    • F1 Score: 0.9542 ± 0.0723
+    • Precision: 0.9888 ± 0.0124
+    • Recall: 0.9394 ± 0.1021
+======================================================================
+
+======================================================================
+EVALUATION RESULTS
+======================================================================
+
+Dataset Information:
+  - Strategy: lofo
+  - Training samples: 40868825
+  - Test samples: 8173765
+
+Model Performance:
+  - Accuracy: 0.9892 ± 0.0156
+  - Precision: 0.9888 ± 0.0124
+  - Recall: 0.9394 ± 0.1021
+  - F1 Score: 0.9542 ± 0.0723
+
+Feature Importance (aggregated across folds):
+  - earth_movers_distance: 0.5615 ± 0.0210
+  - chi_square: 0.2391 ± 0.0204
+  - entropic_relevance: 0.1983 ± 0.0027
+  - trace_probability: 0.0011 ± 0.0020
+======================================================================

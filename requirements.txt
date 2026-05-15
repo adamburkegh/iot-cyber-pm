@@ -1,0 +1,6 @@
+numpy==2.4.4
+scikit-learn==1.8.0
+pandas==2.3.3
+pm4py==2.7.19.5
+ebi-pm==0.3.9
+#graphviz==0.21 #optional
