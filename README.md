@@ -77,8 +77,6 @@ dataset/
 └── malicious/   # IoT-23 malicious scenarios
 ```
 
-The role of each folder follows the pipeline shown in [About](#about).
-
 ### 4. Run
 
 ```
